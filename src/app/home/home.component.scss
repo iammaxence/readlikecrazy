@@ -1,0 +1,19 @@
+.home {
+  &--title {
+    padding: 5rem ;
+    text-align: center;
+    font-size: 5rem;
+  }
+  &--buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+
+    &--item {
+      width: 10rem;
+      height: 3rem;
+    }
+  }
+}
