@@ -11,23 +11,4 @@ import {NgForOf} from "@angular/common";
   styleUrl: './app.component.scss',
   providers: []
 })
-export class AppComponent {
-  title = 'readlikecrazy';
-  allMenu = [
-    {
-      title: 'menu.words',
-      routing: '',
-    },
-    {
-      title: 'menu.phrases',
-      routing: '',
-    }
-  ]
-
-  /*constructor(private translateService: TranslateService) {
-    const userLang = navigator.language || 'fr';
-    const languageCode = userLang.split('-')[0];
-    this.translateService.setDefaultLang(languageCode);
-    this.translateService.use(languageCode);
-  }*/
-}
+export class AppComponent {}

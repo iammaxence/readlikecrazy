@@ -1,4 +1,9 @@
 {
+  "heading": {
+    "speed": "Vitesse",
+    "wordsAtTime": "Mots en même temps",
+    "fontSize": "Taille des mots"
+  },
   "menu": {
     "words": "Lecture par mots",
     "phrases": "Lecture par phrases"

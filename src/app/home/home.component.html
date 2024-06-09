@@ -1,6 +1,6 @@
 <main class="main container">
   <h1 class="home--title"> Read Like Crazy </h1>
   <div class="home--buttons">
-    <button class="home--buttons--item" type="button" *ngFor="let menu of allMenu" (click)="goToPage(menu.routing)"> {{ menu.title | translate }}</button>
+    <button class="home--buttons--item" [id]="menu.title" type="button" *ngFor="let menu of allMenu" (click)="goToPage(menu.routing)"> {{ menu.title | translate }}</button>
   </div>
 </main>

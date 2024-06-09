@@ -21,7 +21,7 @@ export class HomeComponent {
     },
     {
       title: 'menu.phrases',
-      routing: '',
+      routing: 'nfive-phrases',
     }
   ]
 

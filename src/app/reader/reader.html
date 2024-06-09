@@ -1,0 +1,34 @@
+<div class="container reader">
+  <div class="reader--heading">
+    <div id="speed" class="reader--heading--speed">
+      <span> {{ 'heading.speed' | translate }} </span>
+      <div>
+        <button id="btn-speed-decrease" (click)="decreaseSpeed()"> - </button>
+        <span>x{{ speedInMs }}</span>
+        <button id="btn-speed-increase" (click)="increaseSpeed()"> + </button>
+      </div>
+    </div>
+    <div id="wordsAtTime">
+      <span> {{ 'heading.wordsAtTime' | translate }} </span>
+    </div>
+    <div id="fontSize" class="reader--heading--font-size">
+      <span> {{ 'heading.fontSize' | translate }} </span>
+      <div>
+        <button id="btn-fs-decrease" (click)="decreaseFont()"> - </button>
+        <span id="font-size-value"> {{ fontSize }} </span>
+        <button id="btn-fs-increase" (click)="increaseFont()"> + </button>
+      </div>
+    </div>
+  </div>
+  <div id="phrase" class="reader--body" [style.font-size]="fontSize.toString()+'px'">
+    {{ displayPhrase }}
+  </div>
+  <div>
+    <div id="loading-bar"> Loading bar </div>
+    <div id="action-buttons">
+      <button id="btn-play" (click)="play()">Play</button>
+      <button id="btn-pause" (click)="pause()">Pause</button>
+      <button id="btn-reload" (click)="reload()">Reload</button>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,9 @@
 {
+  "heading": {
+    "speed": "Speed",
+    "wordsAtTime": "Words at time",
+    "fontSize": "Font size"
+  },
   "menu": {
     "words": "Reading by words",
     "phrases": "Reading by phrases"

@@ -1,0 +1,23 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MyComponent > should match the snapshot 1`] = `
+<app-home>
+  <main
+    _ngcontent-a-c196787078=""
+    class="main container"
+  >
+    <h1
+      _ngcontent-a-c196787078=""
+      class="home--title"
+    >
+       Read Like Crazy 
+    </h1>
+    <div
+      _ngcontent-a-c196787078=""
+      class="home--buttons"
+    >
+      <!--container-->
+    </div>
+  </main>
+</app-home>
+`;

@@ -21,12 +21,14 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "types": ["vitest/globals"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "types": ["vitest/globals"]
 }
