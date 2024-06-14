@@ -1,10 +1,10 @@
 <div class="container reader">
   <div class="reader--heading">
     <div id="speed" class="reader--heading--speed">
-      <span> {{ 'heading.speed' | translate }} </span>
+      <span> {{ 'heading.wordByMinutes' | translate }} </span>
       <div>
         <button id="btn-speed-decrease" (click)="decreaseSpeed()"> - </button>
-        <span>x{{ speedInMs }}</span>
+        <span id="speed-value">{{ displaySpeed }}</span>
         <button id="btn-speed-increase" (click)="increaseSpeed()"> + </button>
       </div>
     </div>
@@ -23,8 +23,10 @@
   <div id="phrase" class="reader--body" [style.font-size]="fontSize.toString()+'px'">
     {{ displayPhrase }}
   </div>
-  <div>
-    <div id="loading-bar"> Loading bar </div>
+  <div class="reader--footer">
+    <div class="reader--footer--loading-bar" id="loading-bar">
+      <div class="reader--footer--loading-bar--background" [style.width.%]="calculateProgressBarPercentage()"></div>
+    </div>
     <div id="action-buttons">
       <button id="btn-play" (click)="play()">Play</button>
       <button id="btn-pause" (click)="pause()">Pause</button>

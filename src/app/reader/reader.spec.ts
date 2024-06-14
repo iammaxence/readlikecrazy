@@ -36,7 +36,7 @@ describe('ReaderComponent', () => {
   describe('Init', () => {
     it('Should init', () => {
       // Then
-      expect(fixture.debugElement.query(By.css('#speed')).nativeElement.textContent).toContain('heading.speed');
+      expect(fixture.debugElement.query(By.css('#speed')).nativeElement.textContent).toContain('heading.wordByMinutes');
       expect(fixture.debugElement.query(By.css('#wordsAtTime')).nativeElement.textContent).toContain('heading.wordsAtTime');
       expect(fixture.debugElement.query(By.css('#fontSize')).nativeElement.textContent).toContain('heading.fontSize');
       expect(fixture.debugElement.query(By.css('#phrase')).nativeElement.textContent).toContain('きのう');
@@ -71,6 +71,60 @@ describe('ReaderComponent', () => {
         expect(fixture.debugElement.query(By.css('#font-size-value')).nativeElement.textContent).toContain('50');
       })
     })
+
+    describe('Speed', () => {
+      it('Should increase speed', () => {
+        // Given
+        expect(fixture.debugElement.query(By.css('#speed-value')).nativeElement.textContent).toContain('100');
+
+        // When
+        fixture.debugElement.query(By.css('#btn-speed-increase')).triggerEventHandler('click');
+        fixture.detectChanges();
+
+        // Then
+        expect(fixture.debugElement.query(By.css('#speed-value')).nativeElement.textContent).toContain('200');
+      });
+
+      it('Should decrease speed', () => {
+        // Given
+        component.speedOffset = 2;
+        fixture.detectChanges();
+        expect(fixture.debugElement.query(By.css('#speed-value')).nativeElement.textContent).toContain('300');
+
+        // When
+        fixture.debugElement.query(By.css('#btn-speed-decrease')).triggerEventHandler('click');
+        fixture.detectChanges();
+
+        // Then
+        expect(fixture.debugElement.query(By.css('#speed-value')).nativeElement.textContent).toContain('200');
+      })
+
+      it('Should NOT increase speed', () => {
+        // Given
+        component.speedOffset = 2;
+        fixture.detectChanges();
+        expect(fixture.debugElement.query(By.css('#speed-value')).nativeElement.textContent).toContain('300');
+
+        // When
+        fixture.debugElement.query(By.css('#btn-speed-increase')).triggerEventHandler('click');
+        fixture.detectChanges();
+
+        // Then
+        expect(fixture.debugElement.query(By.css('#speed-value')).nativeElement.textContent).toContain('300');
+      })
+
+      it('Should NOT decrease speed', () => {
+        // Given
+        expect(fixture.debugElement.query(By.css('#speed-value')).nativeElement.textContent).toContain('100');
+
+        // When
+        fixture.debugElement.query(By.css('#btn-speed-decrease')).triggerEventHandler('click');
+        fixture.detectChanges();
+
+        // Then
+        expect(fixture.debugElement.query(By.css('#speed-value')).nativeElement.textContent).toContain('100');
+      })
+    })
   })
 
   describe('Footer', () => {
@@ -80,7 +134,7 @@ describe('ReaderComponent', () => {
 
       // When
       fixture.debugElement.query(By.css('#btn-play')).triggerEventHandler('click');
-      vi.advanceTimersByTime(3000);
+      vi.advanceTimersByTime(600 * 3); // 600ms * 3 words
       fixture.detectChanges();
 
       // Then

@@ -1,6 +1,6 @@
 {
   "heading": {
-    "speed": "Speed",
+    "wordByMinutes": "WPM",
     "wordsAtTime": "Words at time",
     "fontSize": "Font size"
   },

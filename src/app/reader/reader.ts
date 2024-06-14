@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, SimpleChanges, ViewChild} from '@angular/core';
 import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
@@ -11,18 +11,35 @@ import {TranslateModule} from "@ngx-translate/core";
   styleUrl: './reader.scss'
 })
 export class Reader {
+    @ViewChild('divToMeasure') divToMeasureElement: ElementRef | undefined;
+    @ViewChild('progressBar') progressBarElement: ElementRef | undefined;
+
+    animationId: any = undefined
+
+    MIN_SPEED = 150;
+    INCREMENTAL_SPEED = 100;
+
     phrase = 'きのう かさ を 買いました. あ, その かさ です か. きれいな かさ です ね. 高かった です か.';
     offset = 0;
+
+    progressBarPercentage = 20;
+
+    speedsInMs = [600, 300, 200];
+    speedOffset = 0;
 
     intervalId: ReturnType<typeof setInterval> | undefined = undefined;
 
     isPlaying = false;
 
-    speedInMs = 1000;
     fontSize = 54;
 
     ngOnDestroy(): void {
       clearInterval(this.intervalId);
+    }
+
+    get displaySpeed(): number {
+      const wordPerSeconds = 1 / (this.speedsInMs[this.speedOffset] / 1000);
+      return wordPerSeconds * 60;
     }
 
     get displayPhrase(): string {
@@ -33,11 +50,15 @@ export class Reader {
     /* HEADER */
 
     public increaseSpeed(): void {
-      this.speedInMs += 100
+      if(this.speedOffset < this.speedsInMs.length - 1) {
+        this.speedOffset++;
+      }
     }
 
     public decreaseSpeed(): void {
-      this.speedInMs -= 100
+      if(this.speedOffset > 0) {
+        this.speedOffset--;
+      }
     }
 
     public increaseFont(): void {
@@ -71,7 +92,10 @@ export class Reader {
       clearInterval(this.intervalId);
     }
 
-    /* PRIVATE FUNCTIONS */
+    public calculateProgressBarPercentage(): number {
+      return (100 * this.offset) / this.phrase.split(' ').length;
+      //return ((this.offset + 1) / this.phrase.split(' ').length) * 100;
+    }
 
     private _setTimer(): void {
       this.intervalId = setInterval(() => {
@@ -80,6 +104,6 @@ export class Reader {
         } else {
           clearInterval(this.intervalId);
         }
-      }, this.speedInMs); // 2 seconds in milliseconds
+      }, this.speedsInMs[this.speedOffset]);
     }
 }
