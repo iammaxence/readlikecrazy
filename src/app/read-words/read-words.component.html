@@ -1,6 +1,6 @@
 <div>
   <h1 class="read-words--title"> Read by words </h1>
   <div class="read-words--buttons">
-    <button class="read-words--buttons--item" type="button" *ngFor="let menu of allMenu" (click)="goToPage(menu.routing)"> {{ menu.title | translate }}</button>
+    <button class="read-words--buttons--item" type="button" *ngFor="let menu of allMenu" [routerLink]="[menu.routing]"> {{ menu.title | translate }}</button>
   </div>
 </div>

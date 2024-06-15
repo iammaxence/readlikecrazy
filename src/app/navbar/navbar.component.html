@@ -1,0 +1,5 @@
+<div class="navbar">
+  <a *ngFor="let menu of allMenu" [routerLink]="menu.routing" [routerLinkActiveOptions]="{exact: true}" [routerLinkActive]="['is-active']">
+    {{ menu.title | translate }}
+  </a>
+</div>

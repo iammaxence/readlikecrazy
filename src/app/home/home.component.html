@@ -1,6 +1,9 @@
-<main class="main container">
-  <h1 class="home--title"> Read Like Crazy </h1>
-  <div class="home--buttons">
-    <button class="home--buttons--item" [id]="menu.title" type="button" *ngFor="let menu of allMenu" (click)="goToPage(menu.routing)"> {{ menu.title | translate }}</button>
+<main>
+  <div class="home">
+    <div class="home--title-wrapper">
+      <h1 class="home--title"> Read Like Crazy </h1>
+      <span class="home--sub-title"> The fastest way to read japanese by reading words and phrases fast </span>
+    </div>
+    <img class="home--bg-img" src="assets/home-background.jpg">
   </div>
 </main>

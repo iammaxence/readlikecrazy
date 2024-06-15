@@ -5,6 +5,7 @@
     "fontSize": "Font size"
   },
   "menu": {
+    "home": "Home",
     "words": "Reading by words",
     "phrases": "Reading by phrases"
   }

@@ -30,6 +30,30 @@ describe('ReaderComponent', () => {
     fixture = TestBed.createComponent(Reader);
     component = fixture.componentInstance;
 
+    component.content = [
+      {
+        "word": "毎朝",
+        "meaning": "every morning",
+        "furigana": "まいあさ",
+        "romaji": "maiasa",
+        "level": 5
+      },
+      {
+        "word": "問題",
+        "meaning": "problem",
+        "furigana": "もんだい",
+        "romaji": "mondai",
+        "level": 5
+      },
+      {
+        "word": "お茶",
+        "meaning": "green tea",
+        "furigana": "おちゃ",
+        "romaji": "ocha",
+        "level": 5
+      },
+    ]
+
     fixture.detectChanges();
   });
 
@@ -39,8 +63,8 @@ describe('ReaderComponent', () => {
       expect(fixture.debugElement.query(By.css('#speed')).nativeElement.textContent).toContain('heading.wordByMinutes');
       expect(fixture.debugElement.query(By.css('#wordsAtTime')).nativeElement.textContent).toContain('heading.wordsAtTime');
       expect(fixture.debugElement.query(By.css('#fontSize')).nativeElement.textContent).toContain('heading.fontSize');
-      expect(fixture.debugElement.query(By.css('#phrase')).nativeElement.textContent).toContain('きのう');
-      expect(fixture.debugElement.query(By.css('#loading-bar')).nativeElement.textContent).toContain('Loading bar');
+      expect(fixture.debugElement.query(By.css('#phrase')).nativeElement.textContent).toContain('毎朝');
+      expect(fixture.debugElement.query(By.css('#loading-bar'))).toBeTruthy();
       expect(fixture.debugElement.query(By.css('#action-buttons')).nativeElement.querySelectorAll('button').length).toBe(3);
     });
   });
@@ -134,12 +158,12 @@ describe('ReaderComponent', () => {
 
       // When
       fixture.debugElement.query(By.css('#btn-play')).triggerEventHandler('click');
-      vi.advanceTimersByTime(600 * 3); // 600ms * 3 words
+      vi.advanceTimersByTime(600 * 2); // 600ms * 2 words
       fixture.detectChanges();
 
       // Then
       expect(component.isPlaying).toBe(true);
-      expect(component.offset).toBe(3);
+      expect(component.offset).toBe(2);
     });
 
     it('Should pause',() => {

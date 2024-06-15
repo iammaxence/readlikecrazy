@@ -1,5 +1,6 @@
-import {Component, ElementRef, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, input, SimpleChanges, ViewChild} from '@angular/core';
 import {TranslateModule} from "@ngx-translate/core";
+import {JapaneseWords} from "../model/JapaneseWords";
 
 @Component({
   selector: 'app-reader',
@@ -11,18 +12,9 @@ import {TranslateModule} from "@ngx-translate/core";
   styleUrl: './reader.scss'
 })
 export class Reader {
-    @ViewChild('divToMeasure') divToMeasureElement: ElementRef | undefined;
-    @ViewChild('progressBar') progressBarElement: ElementRef | undefined;
+    @Input() content: JapaneseWords[] = [];
 
-    animationId: any = undefined
-
-    MIN_SPEED = 150;
-    INCREMENTAL_SPEED = 100;
-
-    phrase = 'きのう かさ を 買いました. あ, その かさ です か. きれいな かさ です ね. 高かった です か.';
     offset = 0;
-
-    progressBarPercentage = 20;
 
     speedsInMs = [600, 300, 200];
     speedOffset = 0;
@@ -43,8 +35,7 @@ export class Reader {
     }
 
     get displayPhrase(): string {
-      const current = this.phrase.split(' ');
-      return current[this.offset];
+      return this.content.length > 0 ? this.content[this.offset].word : '';
     }
 
     /* HEADER */
@@ -93,13 +84,13 @@ export class Reader {
     }
 
     public calculateProgressBarPercentage(): number {
-      return (100 * this.offset) / this.phrase.split(' ').length;
-      //return ((this.offset + 1) / this.phrase.split(' ').length) * 100;
+      const value =  (100 * this.offset) / (this.content.length - 1);
+      return Math.ceil(value);
     }
 
     private _setTimer(): void {
       this.intervalId = setInterval(() => {
-        if(this.offset < this.phrase.split(' ').length) {
+        if(this.offset < this.content.length - 1) {
           this.offset++;
         } else {
           clearInterval(this.intervalId);

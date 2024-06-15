@@ -5,6 +5,7 @@
     "fontSize": "Taille des mots"
   },
   "menu": {
+    "home": "Accueil",
     "words": "Lecture par mots",
     "phrases": "Lecture par phrases"
   }

@@ -37,8 +37,5 @@ describe('HomeComponent', () => {
 
     // Then
     expect(fixture.nativeElement.querySelector('h1').textContent).toContain('Read Like Crazy');
-    expect(fixture.nativeElement.querySelectorAll('button').length).toBe(2);
-    expect(fixture.debugElement.query(By.css('#menu\\.words')).nativeElement.textContent).toContain('menu.words');
-    expect(fixture.debugElement.query(By.css('#menu\\.phrases')).nativeElement.textContent).toContain('menu.phrases');
   });
 });

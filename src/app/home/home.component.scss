@@ -1,9 +1,32 @@
 .home {
-  &--title {
-    padding: 5rem ;
-    text-align: center;
-    font-size: 5rem;
+  position: relative;
+  &--bg-img {
+    width: 100%;
+    height: 35rem;
+    object-fit: cover;
+    filter: brightness(70%);
+    object-position: 20% 20%;
   }
+
+  &--title-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: absolute;
+    z-index: 100;
+    max-width: 40rem;
+    padding: 3rem 3rem;
+    color: mediumspringgreen;
+  }
+
+  &--title {
+    font-size: 7rem;
+  }
+
+  &--sub-title {
+    font-size: 1.5rem;
+  }
+
   &--buttons {
     display: flex;
     flex-direction: column;
