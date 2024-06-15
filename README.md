@@ -1,5 +1,8 @@
 # Readlikecrazy
 
+![homePage](https://github.com/iammaxence/readlikecrazy/assets/32987179/d0bbb74e-9bd4-40c5-8ee3-e7f027308ac9)
+![Reader](https://github.com/iammaxence/readlikecrazy/assets/32987179/40a29102-1294-482a-baf6-4b98ac4ceda5)
+
 ## Feature
 - progress bar
 - Make word at time
